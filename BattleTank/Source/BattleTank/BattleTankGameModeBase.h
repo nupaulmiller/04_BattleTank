@@ -4,11 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "UObject/ObjectMacros.h"
 #include "BattleTankGameModeBase.generated.h"
 
-/**
- * 
- */
+
 UCLASS()
 class BATTLETANK_API ABattleTankGameModeBase : public AGameModeBase
 {
