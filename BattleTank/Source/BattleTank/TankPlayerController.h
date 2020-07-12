@@ -20,16 +20,21 @@ private:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 #pragma endregion
-	
+
+#pragma region Blueprint Editable Fields
 	UPROPERTY(EditAnywhere)
 	float CrossHairXLocation = 0.5f;
-	
+
 	UPROPERTY(EditAnywhere)
 	float CrossHairYLocation = 0.333333f;
-	
+
+	UPROPERTY(EditAnywhere)
+	float LineTraceRange = 1000000.00f;
+#pragma endregion
+
 	ATank* GetControlledTank() const;
 	bool GetSightRayHitLocation(OUT FVector& HitLocation) const;
 	void AimTowardsCrosshair();
 	bool GetLookDirection(FVector2D ScreenLocation, OUT FVector& LookDirection) const;
-
+	bool GetLookVectorHitLocation(OUT FVector &HitLocation, FVector LookDirection) const;
 };
