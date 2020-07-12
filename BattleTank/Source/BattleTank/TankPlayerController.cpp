@@ -50,7 +50,8 @@ bool ATankPlayerController::GetSightRayHitLocation(OUT FVector &HitLocation) con
 	FVector LookDirection;
 	
 	GetViewportSize(OUT ViewPortSizeX, OUT ViewPortSizeY);
-	FVector2D ScreenLocation = FVector2D(ViewPortSizeX * CrossHairXLocation, ViewPortSizeY * CrossHairYLocation);
+	FVector2D ScreenLocation = FVector2D(ViewPortSizeX * CrossHairXLocation, 
+		ViewPortSizeY * CrossHairYLocation);
 
 	if (GetLookDirection(ScreenLocation, OUT LookDirection))
 	{
@@ -63,5 +64,9 @@ bool ATankPlayerController::GetSightRayHitLocation(OUT FVector &HitLocation) con
 bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, OUT FVector& LookDirection) const
 {
 	FVector WorldLocation;
-	return DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, OUT WorldLocation, OUT LookDirection);
+	return DeprojectScreenPositionToWorld(
+		ScreenLocation.X, 
+		ScreenLocation.Y, 
+		OUT WorldLocation, 
+		OUT LookDirection);
 }
