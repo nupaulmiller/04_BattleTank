@@ -28,9 +28,8 @@ private:
 	float CrossHairYLocation = 0.333333f;
 	
 	ATank* GetControlledTank() const;
-	FVector* GetVectorHitLocation() const;
-	bool GetSightRayHitLocation(FVector& HitLocation) const;
+	bool GetSightRayHitLocation(OUT FVector& HitLocation) const;
 	void AimTowardsCrosshair();
-
+	bool GetLookDirection(FVector2D ScreenLocation, OUT FVector& LookDirection) const;
 
 };
