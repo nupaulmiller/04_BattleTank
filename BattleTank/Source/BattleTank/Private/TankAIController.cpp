@@ -50,3 +50,9 @@ void ATankAIController::BeginPlay()
 			*(PlayerTank->GetName()));
 	}
 }
+
+void ATankAIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	GetAIControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+}
