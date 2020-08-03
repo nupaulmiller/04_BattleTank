@@ -54,5 +54,12 @@ void ATankAIController::BeginPlay()
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	GetAIControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+
+	ATank *PlayerTank = GetPlayerTank();
+	ATank *AICOntrolledTank = GetAIControlledTank();
+
+	if (PlayerTank && AICOntrolledTank)
+	{
+		AICOntrolledTank->TankAimingComponent->AimAt(PlayerTank->GetActorLocation());
+	}
 }

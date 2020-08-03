@@ -14,6 +14,9 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
+public:
+	ATankPlayerController();
+
 private:
 	
 #pragma region Overridden Functions
@@ -22,10 +25,10 @@ private:
 #pragma endregion
 
 #pragma region Blueprint Editable Fields
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category="NupaulPosition")
 	float CrossHairXLocation = 0.5f;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "NupaulPosition")
 	float CrossHairYLocation = 0.333333f;
 
 	UPROPERTY(EditAnywhere)

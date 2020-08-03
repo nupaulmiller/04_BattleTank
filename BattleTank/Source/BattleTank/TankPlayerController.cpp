@@ -9,10 +9,12 @@ ATank* ATankPlayerController::GetControlledTank() const
 	return Cast<ATank>(GetPawn());
 }
 
+ATankPlayerController::ATankPlayerController() {}
+
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	ATank* ControllerTank = GetControlledTank();
 
 	if (!ControllerTank)
@@ -39,11 +41,10 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		//UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
-		GetControlledTank()->AimAt(HitLocation);
+		UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
+		GetControlledTank()->TankAimingComponent->AimAt(HitLocation);
 	}
 }
-
 
 bool ATankPlayerController::GetSightRayHitLocation(OUT FVector &HitLocation) const
 {
@@ -77,7 +78,6 @@ bool ATankPlayerController::GetLookVectorHitLocation(OUT FVector &HitLocation, F
 
 	auto StartLocation = PlayerCameraManager->GetCameraLocation();
 	auto EndLocation = StartLocation + (LookDirection * LineTraceRange);
-
 
 	//UE_LOG(LogTemp, Warning, TEXT("StartLocation: %s"), *StartLocation.ToString());
 	//UE_LOG(LogTemp, Warning, TEXT("EndLocation: %s"), *EndLocation.ToString());
