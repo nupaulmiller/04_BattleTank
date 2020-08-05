@@ -60,6 +60,6 @@ void ATankAIController::Tick(float DeltaTime)
 
 	if (PlayerTank && AICOntrolledTank)
 	{
-		AICOntrolledTank->TankAimingComponent->AimAt(PlayerTank->GetActorLocation());
+		AICOntrolledTank->AimAt(PlayerTank->GetActorLocation());
 	}
 }
