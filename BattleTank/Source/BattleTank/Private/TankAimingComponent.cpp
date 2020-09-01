@@ -54,10 +54,7 @@ void UTankAimingComponent::AimAt(FVector HitComponent, float LaunchSpeed)
 		false,
 		0,
 		0,
-		ESuggestProjVelocityTraceOption::DoNotTrace,
-		ResponseParam,
-		ActorsToIgnore,
-		true
+		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
 
 	if (bHaveAimSolution)
@@ -67,12 +64,12 @@ void UTankAimingComponent::AimAt(FVector HitComponent, float LaunchSpeed)
 		MoveBarrelTowards(AimDirection);
 
 		auto Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f: Aim Solution Found"), Time);
+		//UE_LOG(LogTemp, Warning, TEXT("%f: Aim Solution Found"), Time);
 	}
 	else
 	{
 		auto Time = GetWorld()->GetTimeSeconds();
-		UE_LOG(LogTemp, Warning, TEXT("%f: No Aim Solution Found"), Time);
+		//UE_LOG(LogTemp, Warning, TEXT("%f: No Aim Solution Found"), Time);
 	}
 }
 
@@ -83,14 +80,13 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 
 	auto AimAsRotator = AimDirection.Rotation();
 	auto BarrelDeltaRotator = AimAsRotator - BarrelRotator;
-	auto TorrentDeltaRotator = AimAsRotator - TorretRotator;
 
-	UE_LOG(LogTemp, Warning, TEXT("BarrelRotator: %s"), *BarrelRotator.ToString());
-	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *AimAsRotator.ToString());
-	UE_LOG(LogTemp, Warning, TEXT("DeltaRotator: %s"), *TorrentDeltaRotator.ToString());
+	//UE_LOG(LogTemp, Warning, TEXT("BarrelRotator: %s"), *BarrelRotator.ToString());
+	//UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *AimAsRotator.ToString());
+	//UE_LOG(LogTemp, Warning, TEXT("DeltaRotator: %s"), *TorrentDeltaRotator.ToString());
 
 	Barrel->Elevate(BarrelDeltaRotator.Pitch);
-	Torret->Turn(TorrentDeltaRotator.Yaw);
+	Torret->Turn(BarrelDeltaRotator.Yaw);
 }
 
 
