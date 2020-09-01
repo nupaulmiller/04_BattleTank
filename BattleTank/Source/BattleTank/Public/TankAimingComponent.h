@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "Kismet/GameplayStatics.h"
 #include "TankAimingComponent.generated.h"
 
 class UTankBarrel;
+class UTankTorret;
 
 //Holds Barrel's properties and Elevates Barrel
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -20,6 +20,7 @@ public:
 	UTankAimingComponent();
 	void AimAt(FVector HitComponent, float LaunchSpeed);
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
+	void SetTorretReference(UTankTorret* TorrentToSet);
 
 protected:
 	// Called when the game starts
@@ -31,5 +32,6 @@ public:
 	
 private:
 	UTankBarrel* Barrel = nullptr;
+	UTankTorret* Torret = nullptr;
 	void MoveBarrelTowards(FVector AimDirection);
 };

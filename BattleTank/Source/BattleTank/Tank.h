@@ -1,12 +1,13 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
-
-#include "TankAimingComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h" // Always at the bottom
 
+#pragma region Forward Declaration
+class UTankAimingComponent;
+class UTankBarrel;
+class UTankTorret;
+#pragma endregion
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -16,12 +17,14 @@ class BATTLETANK_API ATank : public APawn
 public:
 	void AimAt(FVector HitLocation);
 
-	UFUNCTION(BlueprintCallable, Category = Setup )
+	UFUNCTION(BlueprintCallable)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void PrintErrorMessage(FString Message);
+	UFUNCTION(BlueprintCallable)
+	void SetTorretReference(UTankTorret* TorretToSet);
 
+	UFUNCTION(BlueprintCallable, Category = "ErrorHandling")
+	void PrintErrorMessage(FString Message);
 
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
@@ -36,8 +39,6 @@ private:
 #pragma region Overloaded Method
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 #pragma endregion

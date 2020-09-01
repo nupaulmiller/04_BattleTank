@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "TankPlayerController.h"
+#include "Tank.h"
 
 
 ATank* ATankPlayerController::GetControlledTank() const
@@ -52,8 +52,7 @@ bool ATankPlayerController::GetSightRayHitLocation(OUT FVector &HitLocation) con
 	FVector LookDirection;
 
 	GetViewportSize(OUT ViewPortSizeX, OUT ViewPortSizeY);
-	FVector2D ScreenLocation = 
-		FVector2D(ViewPortSizeX * CrossHairXLocation, ViewPortSizeY * CrossHairYLocation);
+	FVector2D ScreenLocation = FVector2D(ViewPortSizeX * CrossHairXLocation, ViewPortSizeY * CrossHairYLocation);
 
 	if (GetLookDirection(ScreenLocation, OUT LookDirection))
 	{
