@@ -1,11 +1,9 @@
 #include "TankTorret.h"
 
-void UTankTorret::Turn(float RelativeSpeed)
+void UTankTorret::Rotate(float RelativeSpeed)
 {
 	RelativeSpeed = FMath::Clamp<float>(RelativeSpeed, -1, +1);
-	auto HorizontalChange = RelativeSpeed * MaxDegreesPerSecond * GetWorld()->DeltaTimeSeconds;
-	auto RawNewHorizontal = GetRelativeRotation().Yaw + HorizontalChange;
-	auto Horizontal = FMath::Clamp<float>(RawNewHorizontal, MinRotationDegrees , MaxRotationDegrees);
-
-	SetRelativeRotation(FRotator(0, Horizontal, 0));
+	auto RotationChange = RelativeSpeed * MaxDegreesPerSecond * GetWorld()->DeltaTimeSeconds;
+	auto Rotation = GetRelativeRotation().Yaw + RotationChange;
+	SetRelativeRotation(FRotator(0, Rotation, 0));
 }

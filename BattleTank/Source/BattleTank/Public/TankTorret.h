@@ -11,7 +11,7 @@ class BATTLETANK_API UTankTorret : public UStaticMeshComponent
 
 public:
 	//-1 is max downward movement | +1 is max up movement
-	void Turn(float RelativeSpeed);
+	void Rotate(float RelativeSpeed);
 
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)

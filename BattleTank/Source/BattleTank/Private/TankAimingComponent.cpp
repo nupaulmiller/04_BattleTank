@@ -54,7 +54,10 @@ void UTankAimingComponent::AimAt(FVector HitComponent, float LaunchSpeed)
 		false,
 		0,
 		0,
-		ESuggestProjVelocityTraceOption::DoNotTrace
+		ESuggestProjVelocityTraceOption::DoNotTrace,
+		ResponseParam,
+		ActorsToIgnore,
+		true
 	);
 
 	if (bHaveAimSolution)
@@ -86,7 +89,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	//UE_LOG(LogTemp, Warning, TEXT("DeltaRotator: %s"), *TorrentDeltaRotator.ToString());
 
 	Barrel->Elevate(BarrelDeltaRotator.Pitch);
-	Torret->Turn(BarrelDeltaRotator.Yaw);
+	Torret->Rotate(BarrelDeltaRotator.Yaw);
 }
 
 
