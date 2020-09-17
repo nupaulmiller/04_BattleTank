@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
+#include "TankControllerBase.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
 
@@ -8,7 +9,7 @@
 class ATank;
 
 UCLASS()
-class BATTLETANK_API ATankPlayerController : public APlayerController
+class BATTLETANK_API ATankPlayerController : public APlayerController, public TankControllerBase
 {
 	GENERATED_BODY()
 
@@ -23,13 +24,13 @@ private:
 #pragma endregion
 
 #pragma region Blueprint Editable Fields
-	UPROPERTY(EditAnywhere, Category="NupaulPosition")
+	UPROPERTY(EditDefaultsOnly, Category="NupaulPosition")
 	float CrossHairXLocation = 0.5f;
 
-	UPROPERTY(EditAnywhere, Category = "NupaulPosition")
+	UPROPERTY(EditDefaultsOnly, Category = "NupaulPosition")
 	float CrossHairYLocation = 0.333333f;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	float LineTraceRange = 1000000.00f;
 #pragma endregion
 

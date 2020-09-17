@@ -1,5 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+#include "TankControllerBase.h"
 #include "TankPlayerController.h"
 #include "Tank.h"
 
@@ -9,7 +9,10 @@ ATank* ATankPlayerController::GetControlledTank() const
 	return Cast<ATank>(GetPawn());
 }
 
-ATankPlayerController::ATankPlayerController() {}
+ATankPlayerController::ATankPlayerController() 
+{
+	ControllerName = FString("Player Controller");
+}
 
 void ATankPlayerController::BeginPlay()
 {
