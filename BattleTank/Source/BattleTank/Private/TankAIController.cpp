@@ -3,8 +3,6 @@
 #include "TankAIController.h"
 #include "../Tank.h"
 
-
-
 ATankAIController::ATankAIController()
 {
 	ControllerName = FString("AI Controller");
