@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -9,7 +7,6 @@
 #pragma region Forward Declaration
 class UTankProjectileMovementComponent;
 #pragma endregion
-
 
 UCLASS()
 class BATTLETANK_API AProjectile : public AActor

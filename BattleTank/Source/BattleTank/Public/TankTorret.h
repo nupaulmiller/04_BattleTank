@@ -4,9 +4,10 @@
 #include "Components/StaticMeshComponent.h"
 #include "TankTorret.generated.h"
 
+
 UCLASS(meta = (BlueprintSpawnableComponent))
 class BATTLETANK_API UTankTorret : public UStaticMeshComponent
-{
+{ 
 	GENERATED_BODY()
 
 public:
