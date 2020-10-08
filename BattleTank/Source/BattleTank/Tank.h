@@ -5,6 +5,7 @@
 
 #pragma region Forward Declaration
 class UTankAimingComponent;
+class UTankMovementComponent;
 class UTankBarrel;
 class UTankTorret;
 class AProjectile;
@@ -27,13 +28,16 @@ public:
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
+	UPROPERTY(BlueprintReadOnly)
+	UTankMovementComponent* TankMovementComponent = nullptr;
+
 private:
 	// Sets default values for this pawn's properties
 	ATank();
 
 #pragma region Private Blueprint Callable
 	UFUNCTION(BlueprintCallable)
-		void SetTrackReferences(UTankTrack * LTrack, UTankTrack* RTrack);
+	void SetTrackReferences(UTankTrack * LTrack, UTankTrack* RTrack);
 
 	UFUNCTION(BlueprintCallable)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
