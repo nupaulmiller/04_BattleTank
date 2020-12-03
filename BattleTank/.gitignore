@@ -3,6 +3,8 @@
 ###############################
 **/Content/StarterContent/
 **/Content/MobileStarterContent/
+**/MegascansPlugin/
+**/Content/Megascans/
 
 # Visual Studio 2015 user specific files
 .vs/
