@@ -9,6 +9,8 @@ class UTankBarrel;
 class UTankTorret;
 class AProjectile;
 class UTankTrack;
+class UTankMovementComponent;
+
 #pragma endregion
 
 UCLASS()
@@ -27,13 +29,16 @@ public:
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
+	UPROPERTY(BlueprintReadOnly)
+	UTankMovementComponent* TankMovementComponent = nullptr;
+
 private:
 	// Sets default values for this pawn's properties
 	ATank();
 
 #pragma region Private Blueprint Callable
 	UFUNCTION(BlueprintCallable)
-		void SetTrackReferences(UTankTrack * LTrack, UTankTrack* RTrack);
+	void SetTrackReferences(UTankTrack * LTrack, UTankTrack* RTrack);
 
 	UFUNCTION(BlueprintCallable)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
@@ -52,6 +57,7 @@ private:
 	
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 	float ReloadTimeInSeconds = 5;
+
 #pragma endregion
 
 	//Local Barrel Reference for spawning projectile

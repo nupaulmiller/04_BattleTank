@@ -1,5 +1,4 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
 #include "TankTorret.h"
@@ -94,7 +93,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	Torret->Rotate(BarrelDeltaRotator.Yaw);
 }
 
-
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
 	Barrel = BarrelToSet;
@@ -104,3 +102,4 @@ void UTankAimingComponent::SetTorretReference(UTankTorret* TorretToSet)
 {
 	Torret = TorretToSet;
 }
+
