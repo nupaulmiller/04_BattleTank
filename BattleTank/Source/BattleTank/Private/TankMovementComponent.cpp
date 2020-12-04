@@ -13,11 +13,7 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 
 void UTankMovementComponent::Initialize(UTankTrack* Left, UTankTrack* Right)
 {
-	if (!Left || !Right)
-	{
-		UE_LOG(LogUObjectGlobals, Fatal, TEXT("Could not Initialize Movement Component because Left and Right Track references are not valid"));
-		return;
-	}
+	checkf((Left && Right), TEXT("Error Initializing Movement Component: Track references are not valid"));
 
 	LeftTrack = Left;
 	RightTrack = Right;

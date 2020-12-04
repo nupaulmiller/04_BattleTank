@@ -20,7 +20,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Initialize(UTankTrack *Left, UTankTrack *Right);
 
-
 private:
 	UTankTrack* LeftTrack = nullptr;
 	UTankTrack* RightTrack = nullptr;
