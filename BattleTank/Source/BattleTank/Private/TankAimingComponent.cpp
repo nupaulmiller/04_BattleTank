@@ -102,4 +102,3 @@ void UTankAimingComponent::SetTorretReference(UTankTorret* TorretToSet)
 {
 	Torret = TorretToSet;
 }
-

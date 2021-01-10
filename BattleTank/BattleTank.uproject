@@ -15,6 +15,9 @@
 		}
 	],
 	"Plugins": [
-
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true
+		}
 	]
 }

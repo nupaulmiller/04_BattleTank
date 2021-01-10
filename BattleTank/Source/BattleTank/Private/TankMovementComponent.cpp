@@ -5,9 +5,22 @@
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Intend Move Forward Throw: %f"), Throw);
-
+	//UE_LOG(LogTemp, Warning, TEXT("Intend Move Forward Throw: %f"), Throw);
 	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(Throw);
+}
+
+void UTankMovementComponent::IntendTurnRight(float Throw)
+{
+	//UE_LOG(LogTemp, Warning, TEXT("Intend Move Forward Throw: %f"), Throw);
+	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(-Throw);
+}
+
+void UTankMovementComponent::IntendTurnLeft(float Throw)
+{
+	//UE_LOG(LogTemp, Warning, TEXT("Intend Move Forward Throw: %f"), Throw);
+	LeftTrack->SetThrottle(-Throw);
 	RightTrack->SetThrottle(Throw);
 }
 

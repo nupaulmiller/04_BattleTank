@@ -14,7 +14,6 @@ public:
 	ATankPlayerController();
 
 private:
-	
 #pragma region Overridden Functions
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
