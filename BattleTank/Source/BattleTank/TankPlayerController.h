@@ -13,6 +13,9 @@ class BATTLETANK_API ATankPlayerController : public APlayerController, public Ta
 public:
 	ATankPlayerController();
 
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	ATank* GetControlledTank() const;
+
 private:
 #pragma region Overridden Functions
 	virtual void BeginPlay() override;
@@ -29,8 +32,6 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	float LineTraceRange = 1000000.00f;
 #pragma endregion
-
-	ATank* GetControlledTank() const;
 	bool GetSightRayHitLocation(OUT FVector& HitLocation) const;
 	void AimTowardsCrosshair();
 	bool GetLookDirection(FVector2D ScreenLocation, OUT FVector& LookDirection) const;

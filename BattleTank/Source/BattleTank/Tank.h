@@ -26,7 +26,7 @@ public:
     void Fire();
 #pragma endregion
 
-protected:
+	UPROPERTY(BlueprintReadOnly)
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
 	UPROPERTY(BlueprintReadOnly)
