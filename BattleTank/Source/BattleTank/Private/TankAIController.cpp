@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "TankAIController.h"
 #include "TankControllerBase.h"
+#include "TankAimingComponent.h"
 #include "../Tank.h"
 
 ATankAIController::ATankAIController()
@@ -17,8 +18,13 @@ void ATankAIController::Tick(float DeltaTime)
 	{
 		MoveToActor(PlayerTank, AcceptanceRadius); //TODO: Check Radius is in cm
 		
+		if (!AICOntrolledTank->TankAimingComponent) 
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Saith_ATankAIController"));
+			return;
+		}
 
-		AICOntrolledTank->AimAt(PlayerTank->GetActorLocation());
+		AICOntrolledTank->TankAimingComponent->AimAt(PlayerTank->GetActorLocation());
 		//AICOntrolledTank->Fire();
 	}
 }

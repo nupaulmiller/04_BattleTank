@@ -19,13 +19,6 @@ class BATTLETANK_API ATank : public APawn
 	GENERATED_BODY()
 
 public:
-	void AimAt(FVector HitLocation);
-
-#pragma region Public Blueprint Callable
-	UFUNCTION(BlueprintCallable)
-    void Fire();
-#pragma endregion
-
 	UPROPERTY(BlueprintReadOnly)
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
@@ -37,37 +30,10 @@ private:
 	ATank();
 
 #pragma region Private Blueprint Callable
-	UFUNCTION(BlueprintCallable)
-	void SetTrackReferences(UTankTrack * LTrack, UTankTrack* RTrack);
-
-	UFUNCTION(BlueprintCallable)
-	void SetBarrelReference(UTankBarrel* BarrelToSet);
-
-	UFUNCTION(BlueprintCallable)
-	void SetTorretReference(UTankTorret* TorretToSet);
-
 	UFUNCTION(BlueprintCallable, Category = "ErrorHandling")
 	void PrintErrorMessage(FString Message);
 
-	UPROPERTY(EditDefaultsOnly, Category = Firing)
-	float LaunchSpeed = 1000; //Find sensible Default
-
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
-    TSubclassOf<AProjectile> ProjectileBluePrint; 	//UClass * ProjectileBluePrint;
-	
-	UPROPERTY(EditDefaultsOnly, Category = Firing)
-	float ReloadTimeInSeconds = 5;
-
 #pragma endregion
-
-	//Local Barrel Reference for spawning projectile
-	UTankBarrel* Barrel = nullptr;
-
-	//Local Track References for movement
-	UTankTrack* LeftTrack = nullptr;
-	UTankTrack* RightTrack = nullptr;
-
-	float LastFireTime = 0;
 
 #pragma region Overloaded Method
 	// Called when the game starts or when spawned

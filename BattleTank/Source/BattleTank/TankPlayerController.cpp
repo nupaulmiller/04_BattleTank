@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "TankPlayerController.h"
 #include "TankControllerBase.h"
+#include "TankAimingComponent.h"
 #include "Tank.h"
 
 
@@ -11,14 +12,26 @@ ATank* ATankPlayerController::GetControlledTank() const
 
 ATankPlayerController::ATankPlayerController() 
 {
+	UE_LOG(LogTemp, Error, TEXT("Saith_ControllerConstruction"));
 	ControllerName = FString("Player Controller");
 }
 
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	UE_LOG(LogTemp, Warning, TEXT("Saith_7"));
 	ATank* ControllerTank = GetControlledTank();
+
+	if (!ControllerTank)
+	{
+		auto AimingComponent = ControllerTank->FindComponentByClass<UTankAimingComponent>();
+
+		if (AimingComponent)
+			FoundAimingComponent(AimingComponent);
+		else
+			UE_LOG(LogTemp, Warning, TEXT("Player Controller could not Find Aiming Component"));
+	}
+
 
 	if (!ControllerTank)
 	{
@@ -44,8 +57,12 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		//UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
-		GetControlledTank()->AimAt(HitLocation);
+		if (!GetControlledTank()->TankAimingComponent)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Saith_TankAimingComponent"));
+			return;
+		}
+		GetControlledTank()->TankAimingComponent->AimAt(HitLocation);
 	}
 }
 
