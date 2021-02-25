@@ -12,24 +12,27 @@ ATank* ATankPlayerController::GetControlledTank() const
 
 ATankPlayerController::ATankPlayerController() 
 {
-	UE_LOG(LogTemp, Error, TEXT("Saith_ControllerConstruction"));
+	//UE_LOG(LogTemp, Error, TEXT("Saith_ControllerConstruction"));
 	ControllerName = FString("Player Controller");
 }
 
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("Saith_7"));
+	//UE_LOG(LogTemp, Warning, TEXT("Saith_7"));
 	ATank* ControllerTank = GetControlledTank();
 
-	if (!ControllerTank)
+	if (ControllerTank)
 	{
 		auto AimingComponent = ControllerTank->FindComponentByClass<UTankAimingComponent>();
 
 		if (AimingComponent)
+		{
 			FoundAimingComponent(AimingComponent);
+			UE_LOG(LogTemp, Warning, TEXT("Player Controller Found Aiming Component"));
+		}
 		else
-			UE_LOG(LogTemp, Warning, TEXT("Player Controller could not Find Aiming Component"));
+			UE_LOG(LogTemp, Error, TEXT("Player Controller could not Find Aiming Component"));
 	}
 
 
@@ -57,12 +60,31 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		if (!GetControlledTank()->TankAimingComponent)
+		ATank* ControllerTank = GetControlledTank();
+		
+		//UE_LOG(LogTemp, Warning, TEXT("Aim Hit Location: %s"), *HitLocation.ToString());
+
+		if (!ControllerTank)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Saith_TankAimingComponent"));
+			UE_LOG(LogTemp, Error, TEXT("TankAimingComponent Not Found"));
 			return;
 		}
-		GetControlledTank()->TankAimingComponent->AimAt(HitLocation);
+
+		auto AimingComponent = ControllerTank->FindComponentByClass<UTankAimingComponent>();
+		
+		if (AimingComponent)
+		{
+			AimingComponent->AimAt(HitLocation);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("Failed to get AimingComponent"));
+		}
+		
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to get HitLocation"));
 	}
 }
 
@@ -78,7 +100,6 @@ bool ATankPlayerController::GetSightRayHitLocation(OUT FVector &HitLocation) con
 	{
 		return GetLookVectorHitLocation(OUT HitLocation, LookDirection);
 	}
-
 	return false;
 }
 

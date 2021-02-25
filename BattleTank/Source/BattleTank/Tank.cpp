@@ -10,7 +10,7 @@
 // Sets default values
 ATank::ATank()
 {
-	UE_LOG(LogTemp, Error, TEXT("Saith_TankConstruction"));
+	//UE_LOG(LogTemp, Error, TEXT("Saith_TankConstruction"));
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 	
@@ -22,7 +22,7 @@ void ATank::BeginPlay()
 	//TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
 
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("Saith_5"));
+	//UE_LOG(LogTemp, Warning, TEXT("Saith_5"));
 	
 }
 

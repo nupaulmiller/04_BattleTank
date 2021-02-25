@@ -5,6 +5,7 @@
 // Sets default values
 AProjectile::AProjectile()
 {
+	UE_LOG(LogTemp, Warning, TEXT("Saith_AProjectile Created"));
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	ProjectileMovement = CreateDefaultSubobject<UTankProjectileMovementComponent>(FName("Projectile Movement"));
@@ -25,7 +26,13 @@ void AProjectile::Tick(float DeltaTime)
 
 void AProjectile::LaunchProjectile(float Speed)
 {
-	ProjectileMovement->SetVelocityInLocalSpace(FVector::ForwardVector * Speed);
-	ProjectileMovement->Activate();
+	UE_LOG(LogTemp, Warning, TEXT("Launch Projectile Triggered"));
+	ProjectileMovement = CreateDefaultSubobject<UTankProjectileMovementComponent>(FName("Projectile Movement"));
+	if (ProjectileMovement)
+	{
+		ProjectileMovement->SetVelocityInLocalSpace(FVector::ForwardVector * Speed);
+		ProjectileMovement->Activate();
+	}
+	
 }
 

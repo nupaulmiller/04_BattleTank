@@ -20,7 +20,7 @@ void ATankAIController::Tick(float DeltaTime)
 		
 		if (!AICOntrolledTank->TankAimingComponent) 
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Saith_ATankAIController"));
+			//UE_LOG(LogTemp, Warning, TEXT("Saith_ATankAIController"));
 			return;
 		}
 

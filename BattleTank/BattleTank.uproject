@@ -18,6 +18,10 @@
 		{
 			"Name": "ModelingToolsEditorMode",
 			"Enabled": true
+		},
+		{
+			"Name": "DLSS",
+			"Enabled": true
 		}
 	]
 }
